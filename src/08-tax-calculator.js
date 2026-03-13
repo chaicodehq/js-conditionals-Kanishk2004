@@ -27,4 +27,14 @@
  */
 export function calculateTax(income) {
   // Your code here
+  if (income <= 0 ) return 0;
+
+  let taxOwed = 0;
+
+  if (income <= 10000) taxOwed = 0;
+  else if (income <= 30000) taxOwed = (income - 10000) * 0.1;
+  else if (income <= 70000) taxOwed = 2000 + (income - 30000) * 0.2;
+  else taxOwed = 2000 + 8000 + (income - 70000) * 0.3;
+
+  return taxOwed;
 }

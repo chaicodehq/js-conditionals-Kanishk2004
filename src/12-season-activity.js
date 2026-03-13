@@ -31,5 +31,33 @@
  * @returns {{ season: string, activity: string } | null}
  */
 export function getSeasonActivity(month, temperature) {
-  // Your code here
+	// Your code here
+	const winter = [12, 1, 2];
+	const spring = [3, 4, 5];
+	const summer = [6, 7, 8];
+	const autumn = [9, 10, 11];
+
+	if (winter.includes(month)) {
+		if (temperature < 0) return { season: 'Winter', activity: 'skiing' };
+		if (temperature >= 0) return { season: 'Winter', activity: 'ice skating' };
+		return null;
+	}
+	if (spring.includes(month)) {
+		if (temperature > 20) return { season: 'Spring', activity: 'hiking' };
+		if (temperature <= 20)
+			return { season: 'Spring', activity: 'museum visit' };
+		return null;
+	}
+	if (summer.includes(month)) {
+		if (temperature > 35) return { season: 'Summer', activity: 'swimming' };
+		if (temperature <= 35) return { season: 'Summer', activity: 'cycling' };
+		return null;
+	}
+	if (autumn.includes(month)) {
+		if (temperature > 15) return { season: 'Autumn', activity: 'nature walk' };
+		if (temperature <= 15)
+			return { season: 'Autumn', activity: 'reading at a cafe' };
+		return null;
+	}
+	return null;
 }

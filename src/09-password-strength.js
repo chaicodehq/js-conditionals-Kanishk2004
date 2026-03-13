@@ -26,5 +26,18 @@
  * @returns {string} "weak", "medium", "strong", or "very strong"
  */
 export function checkPasswordStrength(password) {
-  // Your code here
+	// Your code here
+	if (password?.length === 0 || typeof password !== "string") return 'weak';
+	let criteriasMet = 0;
+
+	if (password.length >= 8) criteriasMet += 1;
+	if (/[A-Z]/.test(password)) criteriasMet += 1;
+	if (/[a-z]/.test(password)) criteriasMet += 1;
+	if (/[0-9]/.test(password)) criteriasMet += 1;
+	if (/[^a-zA-Z0-9]/.test(password)) criteriasMet += 1;
+
+	if (criteriasMet <= 1) return 'weak';
+	if (criteriasMet <= 3) return 'medium';
+	if (criteriasMet == 4) return 'strong';
+	return 'very strong';
 }
